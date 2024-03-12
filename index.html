@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header">
+        <!-- Contenido del header -->
+        <h1>Nebula</h1>
+        <div class="header-controls">
+            <label for="internetSearchToggle">Web Search</label>
+            <label class="switch" id="internetSearchToggle">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <button class="headerButton">Chat History</button>
+            <button class="headerButton">Upload a File</button>
+            <button class="headerButton">Report an Issue</button>
+        </div>
+    </header>
+    <div class="container">
+        <div id="sidebar">
+            <button class="sidebar-button">Upload a File</button>
+            <button class="sidebar-button">Chat History</button>
+            <button class="sidebar-button">About</button>
+            <button class="sidebar-button">FAQ</button>
+            <button class="sidebar-button">Report an Issue</button>
+        </div>
+        <div id="chat-container">
+            <div id="webchat" role="main"></div>
+        </div>
+    </div>
+    <!-- Incluye la biblioteca de Web Chat antes de cargar tu script -->
+    <script crossorigin="anonymous" src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
