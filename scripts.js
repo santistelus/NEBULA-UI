@@ -5,7 +5,7 @@
         hideUploadButton: false
     };
 
-    const tokenEndpointURL = new URL('https://default38da2016f3ea4b0abb3376eadba89b.d8.environment.api.powerplatform.com/powervirtualagents/botsbyschema/crb36_nebulaUnified/directline/token?api-version=2022-03-01-preview');
+    const tokenEndpointURL = new URL('https://a1a980b40406e5c1bcb0e633542587.0e.environment.api.powerplatform.com/powervirtualagents/botsbyschema/crda6_copilot2/directline/token?api-version=2022-03-01-preview');
     const locale = document.documentElement.lang || 'en';
     const apiVersion = tokenEndpointURL.searchParams.get('api-version');
 
