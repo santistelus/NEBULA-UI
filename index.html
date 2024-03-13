@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nebula AI v2</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nebula AI</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header id="header">
-        <!-- Contenido del header -->
-        <h1>Nebula</h1>
-        <div class="header-controls">
-            <label for="internetSearchToggle">Web Search</label>
-            <label class="switch" id="internetSearchToggle">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-
-        </div>
-    </header>
-    <div class="container">
-        <div id="sidebar">
-            <button class="sidebar-button">Upload a File</button>
-            <button class="sidebar-button">Chat History</button>
-            <button class="sidebar-button">About</button>
-            <button class="sidebar-button">FAQ</button>
-            <button class="sidebar-button">Report an Issue</button>
-        </div>
-        <div id="chat-container">
-            <div id="webchat" role="main"></div>
-        </div>
+  <header id="header"> 
+    <div id="banner">
+      <a href="index.html" ><img src="scr/TELUSH.png" alt="Logo TELUS" id="logo-telus"></a>
+      <h1>NEBULA AI</h1>
+      
     </div>
-    <!-- Incluye la biblioteca de Web Chat antes de cargar tu script -->
-    <script crossorigin="anonymous" src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
-    <script src="scripts.js"></script>
+  </header>
+  <div id="disclaimer-overlay" class="disclaimer-overlay">
+  <div id="disclaimer-banner" class="disclaimer-banner">
+    <p>You must ensure that you consider data privacy and security when using AI. 
+      The use of AI tools and applications must comply with TELUS International Generative AI Acceptable Use Policy available
+       <a href="https://drive.google.com/file/d/1EiLKfTRDST7KJ_A79EftKTVzH5Xjj_sF/view" target="_blank">here</a>. </p><p>🚫 What not to do</p>
+       <p>Do not add any TELUS International Confidential Information</p><p> Do not add any Personal Data</p>
+    <button id="accept-button">Accept</button>
+  </div>
+  </div>
+ 
+  <div id="container">
+    <div id="sidebar">
+      <button class="button" id="chat-history-button">Chat History</button>
+      <button class="button" id="upload-file">Upload a File</button>
+      <button class="button" id="getting-started">Getting Started</button>
+      <button class="button" id="faqs">FAQs</button>
+      <button class="button" id="report-issue">Report an Issue</button>
+      
+    </div>
+    <div id="webchat-container">
+      <div id="webchat" role="main"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js" crossorigin="anonymous"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,60 +1,76 @@
-(async function () {
-    //add avatar
-     
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Agrega un evento al botón para ocultar el descargo de responsabilidad cuando se hace clic en "Aceptar"
+    document.getElementById('accept-button').addEventListener('click', function() {
+      document.getElementById('disclaimer-overlay').style.display = 'none';
+    });
+  });
+  
+  
+  
+  ////////
+  
+  (async function () {
     const styleOptions = {
-        hideUploadButton: false
+      hideUploadButton: false
     };
-
+  
     const tokenEndpointURL = new URL('https://a1a980b40406e5c1bcb0e633542587.0e.environment.api.powerplatform.com/powervirtualagents/botsbyschema/crda6_copilot2/directline/token?api-version=2022-03-01-preview');
+  
     const locale = document.documentElement.lang || 'en';
+  
     const apiVersion = tokenEndpointURL.searchParams.get('api-version');
-
+  
     const [directLineURL, token] = await Promise.all([
-        fetch(new URL(`/powervirtualagents/regionalchannelsettings?api-version=${apiVersion}`, tokenEndpointURL))
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to retrieve regional channel settings.');
-                }
-                return response.json();
-            })
-            .then(({ channelUrlsById: { directline } }) => directline),
-        fetch(tokenEndpointURL)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to retrieve Direct Line token.');
-                }
-                return response.json();
-            })
-            .then(({ token }) => token)
+      fetch(new URL(`/powervirtualagents/regionalchannelsettings?api-version=${apiVersion}`, tokenEndpointURL))
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to retrieve regional channel settings.');
+          }
+          return response.json();
+        })
+        .then(({ channelUrlsById: { directline } }) => directline),
+      fetch(tokenEndpointURL)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to retrieve Direct Line token.');
+          }
+          return response.json();
+        })
+        .then(({ token }) => token)
     ]);
-
-    const directLine = WebChat.createDirectLine({ domain: new URL('v3/directline', directLineURL), token });
-
+  
+    const directLine = window.WebChat.createDirectLine({ domain: new URL('v3/directline', directLineURL), token });
+  
     const subscription = directLine.connectionStatus$.subscribe({
-        next(value) {
-            if (value === 2) {
-                directLine
-                    .postActivity({
-                        localTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                        locale,
-                        name: 'startConversation',
-                        type: 'event'
-                    })
-                    .subscribe();
-
-                subscription.unsubscribe();
-            }
+      next(value) {
+        if (value === 2) {
+          directLine
+            .postActivity({
+              localTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+              locale,
+              name: 'startConversation',
+              type: 'event',
+              value: { DirectLineToken: token }
+            })
+            .subscribe();
+          subscription.unsubscribe();
         }
+      }
     });
-
-    WebChat.renderWebChat({ directLine, locale, styleOptions }, document.getElementById('webchat'));
-})();
-
-document.addEventListener('DOMContentLoaded', function () {
-    const internetSearchToggle = document.getElementById('internetSearchToggle');
-
-    internetSearchToggle.addEventListener('click', function () {
-        internetSearchToggle.classList.toggle('active');
-        // Aquí puedes agregar la lógica adicional para realizar la búsqueda en Internet o cualquier otra acción que desees.
+  
+    document.getElementById('chat-history-button').addEventListener('click', () => {
+      sendEventMessage();
     });
-});
+  
+    function sendEventMessage() {
+      directLine.postActivity({
+        type: 'event',
+        name: 'PDTestEvent',
+        value: token
+      }).subscribe();
+    }
+  
+    window.WebChat.renderWebChat({ directLine, locale, styleOptions }, document.getElementById('webchat'));
+  })();
+  
