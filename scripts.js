@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         conversationId = sessionStorage['conversationId'];  // If this is set, the there is an existing conversation to be retrieved, watermark is a const value of 1
         var directLine;
         // var listArray = [conversationId,token];
-        console.log(listArray);
+        // console.log(listArray);
         if(conversationId) { 
           directLine = WebChat.createDirectLine({ domain: new URL('v3/directline', sessionStorage['directLineURL']), token: sessionStorage['token'], conversationId: conversationId, watermark: watermark});
         }
