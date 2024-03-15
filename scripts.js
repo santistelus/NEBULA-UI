@@ -75,18 +75,27 @@ document.addEventListener('DOMContentLoaded', function() {
           // To maintain conversation across page navigation, save and reuse the token.        
           sessionStorage['token'] = token;
           sessionStorage['directLineURL'] = directLineURL;
+          
         } 
   
         // The token could have access to sensitive information about the user.
         // It must be treated like user password.
         conversationId = sessionStorage['conversationId'];  // If this is set, the there is an existing conversation to be retrieved, watermark is a const value of 1
         var directLine;
+        // var listArray = [conversationId,token];
+        console.log(listArray);
         if(conversationId) { 
           directLine = WebChat.createDirectLine({ domain: new URL('v3/directline', sessionStorage['directLineURL']), token: sessionStorage['token'], conversationId: conversationId, watermark: watermark});
         }
         else {
           directLine = WebChat.createDirectLine({ domain: new URL('v3/directline', directLineURL), token: token, watermark: watermark});
+          // newconvoid = sessionStorage['conversationId'];
+          // newtoken = sessionStorage['token']; 
+          // listArray.push(newconvoid, newtoken);
+          // console.log(listArray);
         }
+
+
 
     // const directLine = window.WebChat.createDirectLine({ domain: new URL('v3/directline', directLineURL), token });
   
@@ -117,7 +126,8 @@ document.addEventListener('DOMContentLoaded', function() {
               localTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
               locale,
               name: 'startConversation',
-              type: 'event'
+              type: 'event',
+              value: {DirectLineToken: token}
             })
             .subscribe();
 
