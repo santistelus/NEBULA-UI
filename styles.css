@@ -125,5 +125,8 @@ body, html {
     background-color: #2B8000;
   }
   
+  a.button {
+    text-decoration: none; /* Quita el subrayado del enlace */
+  }
   
   

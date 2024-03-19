@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('disclaimer-overlay').style.display = 'none';
   });
 });
+
+document.getElementById('report-issue').addEventListener('click', function() {
+  window.location.href = 'reportissue.html'; // Cambia 'reportissue.html' por la URL a la que deseas redireccionar
+});
+
 /////////////////////
 
 
@@ -12,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const styleOptions = {
     hideUploadButton: false,
     botAvatarInitials: 'NB',         
-    //botAvatarImage: undefined,          
+    botAvatarImage: 'src/botavatar.png',          
     botAvatarBackgroundColor: 'rgb(0,25,49)',
     userAvatarBackgroundColor: 'rgba(75,40,109)',
     userAvatarInitials: 'You'
