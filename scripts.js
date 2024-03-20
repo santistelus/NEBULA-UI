@@ -9,9 +9,32 @@ document.getElementById('report-issue').addEventListener('click', function() {
 });
 
 
+document.getElementById('getting-started').addEventListener('click', function() {
+
+
+  
+  
+  setTimeout(function() {
+    window.open('https://docs.google.com/document/d/1FDyuimqaXIHgf09gq7TcdXJInyHLKa1laaddgewdkkc', '_blank');
+
+  }, 500); 
+});
+
+
+document.getElementById('faqs').addEventListener('click', function() {
+
+  
+  
+  
+  setTimeout(function() {
+    window.open('https://docs.google.com/document/d/1iGQKGuvWS8GbwucKcBGcBfnWr6t32px-Sx53o-100a0', '_blank');
+
+  }, 500); 
+});
+
 (async function () {
   const styleOptions = {
-    hideUploadButton: false,
+    hideUploadButton: true,
     botAvatarInitials: 'NB',         
     botAvatarImage: 'src/botavatar.png',          
     botAvatarBackgroundColor: 'rgb(0,25,49)',

@@ -126,3 +126,20 @@ h1 {
 a.button {
   text-decoration: none;
 }
+
+#content {
+  font-family: Helvetica;
+  overflow: auto; /* Añade scroll si el contenido excede el tamaño del div */
+  max-height: 100vh; /* Altura máxima del div, ajusta según tu diseño */
+  padding-right: 15px; /* Agrega espacio para evitar que el contenido se solape con la barra de desplazamiento */
+  padding-left: 15px; /* Agrega espacio para evitar que el contenido se solape con la barra de desplazamiento */
+
+  
+}
+#container {
+  transition: opacity 0.7s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+}
