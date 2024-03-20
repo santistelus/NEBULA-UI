@@ -22,6 +22,7 @@ document.getElementById('report-issue').addEventListener('click', function() {
 
   const locale = document.documentElement.lang || 'en';
 
+  //TODO:the watermark keeps the conversation after testing, the set value is 1, have to check topics for reiteration
   const apiVersion = tokenEndpointURL.searchParams.get('api-version');
   const watermark = 1; 
 
@@ -78,6 +79,8 @@ document.getElementById('report-issue').addEventListener('click', function() {
 
         subscription.unsubscribe();
       }
+      // console.log("I was here");
+      //console log to see if it goes for each refresh from tab, goes three times?
     }          
   });
 
@@ -88,8 +91,7 @@ document.getElementById('report-issue').addEventListener('click', function() {
   function sendEventMessage() {
     directLine.postActivity({
       type: 'event',
-      name: 'PDTestEvent',
-      value: token
+      name: 'PDTestEvent'
     }).subscribe();
   }
 
