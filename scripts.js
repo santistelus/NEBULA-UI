@@ -103,7 +103,7 @@ document.getElementById('faqs').addEventListener('click', function() {
     }          
   });
 
-  document.getElementById('chat-history-button').addEventListener('click', () => {
+ /* document.getElementById('chat-history-button').addEventListener('click', () => {
     sendEventMessage();
   });
 
@@ -112,7 +112,7 @@ document.getElementById('faqs').addEventListener('click', function() {
       type: 'event',
       name: 'PDTestEvent'
     }).subscribe();
-  }
+  }*/
 
     // Function to start a new chat session
 async function startNewSession() {
