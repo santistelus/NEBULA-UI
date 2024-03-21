@@ -9,10 +9,7 @@ document.getElementById('report-issue').addEventListener('click', function() {
 });
 
 
-document.getElementById('getting-started').addEventListener('click', function() {
-
-
-  
+document.getElementById('getting-started').addEventListener('click', function() { 
   
   setTimeout(function() {
     window.open('https://docs.google.com/document/d/1FDyuimqaXIHgf09gq7TcdXJInyHLKa1laaddgewdkkc', '_blank');
@@ -21,9 +18,7 @@ document.getElementById('getting-started').addEventListener('click', function() 
 });
 
 
-document.getElementById('faqs').addEventListener('click', function() {
-
-  
+document.getElementById('faqs').addEventListener('click', function() { 
   
   
   setTimeout(function() {
@@ -32,9 +27,10 @@ document.getElementById('faqs').addEventListener('click', function() {
   }, 500); 
 });
 
+
 (async function () {
   const styleOptions = {
-    hideUploadButton: true,
+    hideUploadButton: false,
     botAvatarInitials: 'NB',         
     botAvatarImage: 'src/botavatar.png',          
     botAvatarBackgroundColor: 'rgb(0,25,49)',

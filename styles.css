@@ -129,10 +129,10 @@ a.button {
 
 #content {
   font-family: Helvetica;
-  overflow: auto; /* Añade scroll si el contenido excede el tamaño del div */
-  max-height: 100vh; /* Altura máxima del div, ajusta según tu diseño */
-  padding-right: 15px; /* Agrega espacio para evitar que el contenido se solape con la barra de desplazamiento */
-  padding-left: 15px; /* Agrega espacio para evitar que el contenido se solape con la barra de desplazamiento */
+  overflow: auto; 
+  max-height: 100vh; 
+  padding-right: 15px; 
+  padding-left: 15px; 
 
   
 }
@@ -142,4 +142,16 @@ a.button {
 
 .fade-out {
   opacity: 0;
+}
+#navigator {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center; 
+  height: 100%; 
+  margin-top: 15px; 
+  margin-left: 800px; 
+
+}
+.button {
+  margin-left: 10px; 
 }
