@@ -114,5 +114,73 @@ document.getElementById('faqs').addEventListener('click', function() {
     }).subscribe();
   }
 
+    // Function to start a new chat session
+async function startNewSession() {
+  // Clear the existing chat session data
+  sessionStorage.removeItem('conversationId');
+  sessionStorage.removeItem('token');
+
+  // Generate a new token
+  const response = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer gooUi5ghUEs.vOFyoQ2lkTTAo6kKmxGjxRa2uUhrC5OF_oFEaxgKrUs'
+    }
+  });
+  const { token } = await response.json();
+
+  // Start a new conversation
+  const conversationResponse = await fetch('https://directline.botframework.com/v3/directline/conversations', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+  const { conversationId } = await conversationResponse.json();
+
+  // Store the new conversation ID and token
+  sessionStorage.setItem('conversationId', conversationId);
+  sessionStorage.setItem('token', token);
+
+  const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
+    if (action.type === 'WEB_CHAT/SET_SEND_BOX') {
+      // Clear the send box (input field)
+      dispatch({
+        type: 'WEB_CHAT/SEND_MESSAGE',
+        payload: { text: '' }
+      });
+    } else if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+      // Reset the conversation history when the connection is established
+      dispatch({
+        type: 'WEB_CHAT/SEND_POST_ACTIVITY',
+        payload: {
+          method: 'DELETE',
+          activity: { type: 'invoke', name: 'deleteUserData' }
+        }
+      });
+      
+      dispatch({
+        type: 'WEB_CHAT/SEND_EVENT',
+    payload: { name: 'startConversation', value:{conversationId:conversationId} }
+
+      });
+    } 
+  
+    return next(action);
+  });
+
+  // console.log(conversationId);
+  // console.log("this is after refresh");
+  // Assuming you have a reference to the Web Chat component
+  window.WebChat.renderWebChat({
+    directLine: window.WebChat.createDirectLine({ token }),
+    store,styleOptions
+  }, document.getElementById('webchat'));
+}
+
+// button element with id 'newSession'
+const newSessionButton = document.getElementById('restart-chat');
+newSessionButton.addEventListener('click', startNewSession);
+
   window.WebChat.renderWebChat({ directLine, locale, styleOptions }, document.getElementById('webchat'));
 })();
