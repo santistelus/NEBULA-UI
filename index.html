@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <title>Nebula AI</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -10,7 +11,7 @@
   <header id="header"> 
     <div id="banner">
       <a href="index.html" ><img src="src/TELUSH.png" alt="Logo TELUS" id="logo-telus"></a>
-      <h1>NEBULA AI</h1>
+      <h1 id="banner_title">NEBULA AI</h1>
       <div id="navigator">
         <button class="button" id="getting-started">Prompt Guide </button>
         <button class="button" id="faqs">FAQs</button>
@@ -40,13 +41,16 @@
       
     </div>
     <div id="webchat-container">
-      <div id="webchat" role="main"></div>
+      <div id="webchat" role="main"></div>    
      
     </div>
+          <div id="footer-disclaimer">
+        <p>Disclaimer: The information provided by Nebula AI, whether sourced internally or from the web, may display inaccurate information. It is advisable to independently verify crucial details.</p>
+      </div>
   </div>
 
-
-  <!--<iframe src="https://web.powerva.microsoft.com/environments/Default-38da2016-f3ea-4b0a-bb33-76eadba89bd8/bots/crb36_nebulaAi/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+  
+   <!--<iframe src="https://web.powerva.microsoft.com/environments/Default-38da2016-f3ea-4b0a-bb33-76eadba89bd8/bots/crb36_nebulaAi/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%;"></iframe>
   -->
   <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
