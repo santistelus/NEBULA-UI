@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.getElementById('report-issue').addEventListener('click', function() {
-  window.open('https://tisddev.service-now.com/sp?id=sc_cat_item&sys_id=e415c6b11b898250950d86ecdc4bcbf0', '_blank');
+  window.open('https://tisdtest.service-now.com/sp?id=sc_cat_item&sys_id=e415c6b11b898250950d86ecdc4bcbf0', '_blank');
 });
 
 

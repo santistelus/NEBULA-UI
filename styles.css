@@ -172,16 +172,35 @@ a.button {
   position: fixed;
   bottom: 0;
   width: 100%;
+  max-height: 50vh;
+  overflow-y: auto;
   /*box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);*/
 }
 #footer-disclaimer p {
-  margin: auto; /* Ajusta el margen superior e inferior para centrar verticalmente el texto */
+  margin: auto; 
 }
+
+#disclaimer-text {
+  font-size: 1em; 
+  line-height: 1.5; 
+}
+
 #banner_title {
   color: #4B286D;
   font-family: Helvetica;
-  font-size: 2.5vw; /* Cambiar el tamaño del título para que sea relativo al ancho de la pantalla */
+  font-size: 2.5vw; 
   line-height: 50px;
   margin: 0;
   padding: 0 20px;
+}
+@media screen and (min-width: 768px) {
+  #disclaimer-text {
+    font-size: 1.2em; /* Ajusta el tamaño de la fuente para pantallas más grandes */
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #footer-disclaimer {
+    padding: 5px; /* Ajusta el espacio alrededor del texto para pantallas más pequeñas */
+  }
 }
